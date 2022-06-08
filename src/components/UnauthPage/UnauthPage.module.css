@@ -1,0 +1,7 @@
+const UnauthPage = (props) => {
+    return (
+        <div>You must log in</div>
+    )
+}
+
+export default UnauthPage;

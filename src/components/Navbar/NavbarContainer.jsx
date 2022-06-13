@@ -1,20 +1,10 @@
-import s from './Navbar.module.css'
-import {NavLink} from "react-router-dom";
+import Navbar from "./Navbar";
+import {connect} from "react-redux";
+import {logout} from "../../redux/userReducer";
 
-const Navbar = (props) => {
-    return (
-        <div className={s.container}>
-            <div>
-                <NavLink className={s.menu_item} to={'/todo-list'}>ToDo List</NavLink>
-            </div>
-            <div>
-                <NavLink className={s.menu_item} to={'/settings'}>Settings</NavLink>
-            </div>
-            <div>
-                <button className={s.logout_button}>LogOut ▶</button>
-            </div>
-        </div>
-    )
-}
+let mapStateToProps = (state) => ({
+    token: state.userReducer.auth_token,
+    isAuth: state.userReducer.isAuth,
+})
 
-export default Navbar;
+export default connect(mapStateToProps, {logout})(Navbar);

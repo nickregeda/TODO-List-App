@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
+import LoginContainer from "./components/LoginForm/LoginContainer";
+import ToDoListContainer from "./components/ToDoList/ToDoListContainer";
+import ProfileSettingsContainer from "./components/ProfileSettings/ProfileSettingsContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
+import UnauthPage from "./components/UnauthPage/UnauthPage";
+import {useEffect} from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(props) {
+    useEffect(() => {
+        if (props.isAuth) {
+            props.getMe(props.token)
+        }
+    }, [props.isAuth])
+    return (
+        <div className="container">
+            <NavbarContainer/>
+            <div className={'app'}>
+                <Routes>
+                    <Route path={'/'} element={<UnauthPage/>}/>
+                    <Route path={'/todo-list'} element={<ToDoListContainer/>}/>
+                    <Route path={'/login'} element={<LoginContainer/>}/>
+                    <Route path={'/settings'} element={<ProfileSettingsContainer/>}/>
+                </Routes>
+            </div>
+        </div>
+    );
 }
 
 export default App;

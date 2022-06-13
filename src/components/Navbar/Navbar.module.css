@@ -1,0 +1,36 @@
+.container {
+    grid-area: navbar;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 30px;
+}
+
+.menu_item{
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+}
+.menu_item:hover{
+    color: dimgrey;
+    background: white;
+}
+
+button {
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    background: white;
+    color: dimgrey;
+}

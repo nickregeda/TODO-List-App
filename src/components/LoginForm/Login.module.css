@@ -1,46 +1,41 @@
-import {Formik, Form, Field, ErrorMessage} from "formik";
-import {Navigate} from 'react-router-dom';
-
-export const LoginForm = (props) => {
-    return (
-        <Form>
-            <div>
-                <label htmlFor="email">email</label>
-                <Field name={'email'} type={'email'}/>
-                <ErrorMessage name={'email'} component={'div'}/>
-            </div>
-            <div>
-                <label htmlFor="">password</label>
-                <Field name={'password'} type={'password'}/>
-                <ErrorMessage name={'password'} component={'div'}/>
-            </div>
-            <button>Log In</button>
-        </Form>
-    )
+.container {
+    width: 300px;
+    margin: 0 auto;
 }
 
-const Login = (props) => {
-
-    if (props.isAuth) {
-        return <Navigate to={'/todo-list'}/>
-    }
-
-    let onSubmit = (values) => {
-        props.login(values.email, values.password)
-    }
-
-    return (
-        <div>
-            <h1>Login</h1>
-            <Formik
-                initialValues={{email: '', password: ''}}
-                onSubmit={onSubmit}>
-                {({values}) => {
-                    return <LoginForm/>
-                }}
-            </Formik>
-        </div>
-    )
+.item {
+    margin-bottom: 20px;
 }
 
-export default Login;
+.main_label {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.label {
+    display: block;
+    font-size: 18px;
+    color: white;
+}
+
+.field {
+    width: 100%;
+    height: 30px;
+    box-sizing: border-box;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.error_mes {
+    background: rgba(159, 20, 20, 0.63);
+    border-radius: 5px;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.73);
+}
+
+.login_button {
+    display: block;
+    margin: 0 auto;
+}

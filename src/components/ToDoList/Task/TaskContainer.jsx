@@ -1,21 +1,9 @@
-import s from '../ToDoList.module.css';
+import {connect} from "react-redux";
+import Task from "./Task";
+import {completeTaskRequest, deleteTaskRequest, updateTaskRequest} from "../../../redux/taskReducer";
 
-const Task = (props) => {
-    let createdAt = props.createdAt.substr(0, 10);
-    return (
-        <div className={s.task_container}>
-            <div>
-                <div className={s.description}>{props.description}</div>
-                <div className={s.createdAt}>{createdAt}</div>
-            </div>
-            <div>
-                <button onClick={() => {
-                    props.onDeleteTask(props.id)
-                }}>Delete
-                </button>
-            </div>
-        </div>
-    )
-}
+let mapStateToProps = (state) => ({
+    token: state.userReducer.auth_token,
+});
 
-export default Task;
+export default connect(mapStateToProps, {deleteTaskRequest, updateTaskRequest, completeTaskRequest})(Task);
